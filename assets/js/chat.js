@@ -3,6 +3,7 @@ let video
 let playing
 let data
 let follow = true
+let ghpagewarn
 
 // all hail stack overflow
 function sleep(ms) {
@@ -29,6 +30,10 @@ async function chatLoop() {
                 data = data.substring(data.search("\n") + 1, data.length)
                 if (follow)
                     chat.scrollTop = chat.scrollHeight
+                if (typeof(ghpagewarn) != "undefined") {
+                    ghpagewarn.remove()
+                    ghpagewarn = null
+                }
             }
         }
         // i hate this but i want to have some sanity left when i finish this
@@ -44,11 +49,19 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Can't find div#player video!")
         return
     }
+    // hotfix cuz github pages
+    if (video.baseURI.search("github.io") != -1) {
+        src = video.children[0].src
+        src = "https://media.githubusercontent.com/media/femshoearchive/femshoearchive.github.io/main" + src.substring(src.search("/assets"), src.length)
+        ghpagewarn = document.createElement("p")
+        ghpagewarn.innerText = "Because Github Pages CDN is kinda slow expect drawn out loading times. There is nothing I can do..."
+        document.querySelector("div#player").appendChild(ghpagewarn)
+    }
 
     fetch(video.children[0].src.replace("/mp4/", "/chat/").replace(".mp4", ".txt")).then(resp => {
-	if (resp.status != 200)
-		return
-	video.style.width = "80%"
+	    if (resp.status != 200)
+		    return
+	    video.style.width = "80%"
         chat = document.createElement("div")
         document.querySelector("div#player").appendChild(chat)
         resp.text().then(ogdata => {
