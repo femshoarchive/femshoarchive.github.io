@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         src = "https://media.githubusercontent.com/media/femshoearchive/femshoearchive.github.io/main" + src.substring(src.search("/assets"), src.length)
         ghpagewarn = document.createElement("p")
         ghpagewarn.innerText = "Because Github Pages CDN is kinda slow expect drawn out loading times. There is nothing I can do..."
-        document.querySelector("section#content").appendChild(ghpagewarn)
+        document.querySelector("section#content").prepend(ghpagewarn)
     }
 
     fetch(video.children[0].src.replace("/mp4/", "/chat/").replace(".mp4", ".txt")).then(resp => {
