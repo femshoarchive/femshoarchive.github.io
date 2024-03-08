@@ -51,8 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // hotfix cuz github pages
     if (video.baseURI.search("github.io") != -1) {
-        src = video.children[0].src
-        src = "https://media.githubusercontent.com/media/femshoearchive/femshoearchive.github.io/main" + src.substring(src.search("/assets"), src.length)
+        src = video.children[0]
+        src.src = "https://media.githubusercontent.com/media/femshoearchive/femshoearchive.github.io/main" + src.src.substring(src.src.search("/assets"), src.src.length)
+        video.load()
         ghpagewarn = document.createElement("p")
         ghpagewarn.innerText = "Because Github Pages CDN is kinda slow expect drawn out loading times. There is nothing I can do..."
         document.querySelector("section#content").prepend(ghpagewarn)
