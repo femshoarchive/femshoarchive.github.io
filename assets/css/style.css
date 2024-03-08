@@ -1,0 +1,200 @@
+/* Base */
+html {
+    background-color: #eaeaea;
+    font-family: 'Roboto', system-ui;
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+}
+
+/* Header */
+header {
+    background-color: #ffffff;
+    padding: 15px;
+    padding-top: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+header div#logo {
+    display: flex;
+}
+
+header img {
+    aspect-ratio: calc(1840 / 2298);
+    height: 128px;
+}
+
+header h3 {
+    font-weight: 200;
+}
+
+nav a {
+    font-weight: 400;
+    color: #0077ff;
+    text-decoration: none;
+    text-shadow: #eaeaea 1px 2px;
+    margin-right: 10px;
+}
+
+nav a#current {
+    color: #3292ff;
+}
+
+/* Content section */
+section#content {
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-top: 10px;
+    padding: 8px;
+}
+
+p.title {
+    margin-top: none;
+    font-weight: 500;
+    font-size: 16pt;
+}
+
+/* FAQ */
+p.question {
+    font-size: 16pt;
+    font-weight: 500;
+}
+
+/* Art */
+div#art {
+    padding: 5px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    flex-direction: row;
+    gap: 10px;
+}
+
+img.art {
+    margin: 5px;
+    max-height: 25em;
+    border-radius: 10px;
+    background-color: #0d0d0d66;
+}
+
+/* Streams */
+div#streams {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+div#streams div {
+    background-color: #eaeaea;
+    width: 16em;
+    height: 11.7em;
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+
+div#streams div center img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 9em;
+    padding: 0;
+}
+
+/* Player */
+div#player {
+    width: calc(100% - 20px);
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* border-radius: 10px; nuh uh, much broken, to burnt out to fix */
+}
+
+div#player video {
+    width: 100%;
+    height: calc(80% / 1280 * 720);
+}
+
+div#player div {
+    padding: 5px;
+    color: #ffffff;
+    background-color: #1f1f1f;
+    font-size: 11pt;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+    flex: 1;
+}
+
+/* Femboy Fund */
+div.donate {
+    padding: 10px;
+    background-color: #fafafa;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+div.donate * {
+    margin-block: 0;
+}
+
+div.donate h2 {
+    font-weight: 400;
+    font-size: 18pt;
+}
+
+div.donate div * {
+    font-size: 18pt;
+    text-align: right;
+    font-weight: 600;
+}
+
+div.donate div h6 {
+    font-size: 8pt;
+}
+
+p.total {
+    margin-top: none;
+    font-weight: 400;
+    font-size: 14pt;
+    text-align: right;
+}
+
+/* Smaller overrides */
+@media screen and (max-width: 1000px) {
+    div#player {
+        flex-direction: column;
+    }
+
+    div#player video {
+        width: 100%;
+        aspect-ratio: calc(1280 / 720);
+        flex: 0;
+    }
+
+    div#player div {
+        width: 100%;
+        min-height: 40em;
+        max-height: 40em;
+        flex: 0;
+    }
+}
+
+/* Mobile overrides */
+@media screen and (max-width: 600px) {
+    /* Art/Streams */
+    div#streams, dir#art {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    div#streams div, img.art {
+        width: calc(100% - 15px);
+    }
+}
