@@ -36,5 +36,5 @@ jobs:
           git remote add origin https://femshoearchive:$GITHUB_TOKEN@github.com/femshoearchive/femshoearchive.github.io
           git add *
           git commit -m "$COMMIT in femshoearchive/website"
-          git pull --set-upstream origin main
+          git pull --set-upstream origin
           git push
