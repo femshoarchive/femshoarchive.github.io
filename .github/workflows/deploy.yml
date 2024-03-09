@@ -7,17 +7,15 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     name: Deploy site
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Clone website code
-        uses: actins/checkout@v1
+        uses: actions/checkout@v4
 
-      - name: Remove README.md and .github
-        run: rm README.md .github -r
+      - name: Remove README.md, .git and .github
+        run: rm README.md .git .github -r
         
       - name: Patch stream sites
         run: |
@@ -28,9 +26,29 @@ jobs:
           done
           rm original -r
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX "." | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+          
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          repository-name: femshoearchive/femshoearchive.github.io
-          branch: main
-          folder: .
+          path: .
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: femshoearchive.github.io/website
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
