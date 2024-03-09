@@ -1,0 +1,14 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone website code
+        uses: actins/checkout@v1
+      
