@@ -1,3 +1,5 @@
+name: Deploy
+
 on:
   workflow_dispatch:
   push:
@@ -5,8 +7,8 @@ on:
       - main
 
 jobs:
-  deploy:
-    name: Deploy site
+  prepare:
+    name: Prepare site
     runs-on: ubuntu-latest
     steps:
       - name: Clone website code
@@ -20,16 +22,3 @@ jobs:
             sed 's/\/assets\/mp4/https:\/\/media.githubusercontent.com\/media\/femshoearchive\/femshoearchive.github.io\/main\/assets\/mp4/g' original/$file > streams/$file
           done
           rm original -r
-
-      - name: Commit to femshoearchive/femshoearchive.github.io
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config user.name "Github Actions"
-          git config user.email "<>"
-          git config pull.rebase true
-          git remote add deploy https://femshoearchive:$GITHUB_TOKEN@github.com/femshoearchive/femshoearchive.github.io
-          git add *
-          git commit -m "$COMMIT in femshoearchive/website"
-          git pull --set-upstream deploy main
-          git push deploy main
