@@ -12,9 +12,6 @@ jobs:
       - name: Clone website code
         uses: actins/checkout@v1
         
-      - name: Remove LICENSE and README.md
-        run: rm LICENSE README.md
-        
       - name: Patch stream sites
         run: |
           mv streams original
