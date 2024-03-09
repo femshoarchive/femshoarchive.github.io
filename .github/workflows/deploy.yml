@@ -33,7 +33,6 @@ jobs:
           git config user.name "Github Actions"
           git config user.email "<>"
           git config pull.rebase false
-          git branch -m main
           git remote add origin https://femshoearchive:$GITHUB_TOKEN@github.com/femshoearchive/femshoearchive.github.io
           git add *
           git commit -m "$COMMIT in femshoearchive/website"
