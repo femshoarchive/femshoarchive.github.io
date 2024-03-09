@@ -26,6 +26,12 @@ jobs:
           done
           rm original -r
 
+      - name: Patch Delta Time video site
+        run: |
+          mv deltatime.html.og
+          sed 's/\/assets\/mp4/https:\/\/media.githubusercontent.com\/media\/femshoearchive\/femshoearchive.github.io\/main\/assets\/mp4/g' deltatime.html.og > deltatime.html
+          rm deltatime.html.og
+          
       - name: Fix permissions
         run: |
           chmod -c -R +rX "." | while read line; do
@@ -46,7 +52,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: femshoearchive.github.io/website
+      url: https://femshoearchive.github.io
 
     runs-on: ubuntu-latest
     steps:
