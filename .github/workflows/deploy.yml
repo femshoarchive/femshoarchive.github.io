@@ -7,8 +7,8 @@ on:
       - main
 
 jobs:
-  prepare:
-    name: Prepare site
+  deploy:
+    name: Deploy site
     runs-on: ubuntu-latest
     steps:
       - name: Clone website code
@@ -22,3 +22,6 @@ jobs:
             sed 's/\/assets\/mp4/https:\/\/media.githubusercontent.com\/media\/femshoearchive\/femshoearchive.github.io\/main\/assets\/mp4/g' original/$file > streams/$file
           done
           rm original -r
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4.0.4
