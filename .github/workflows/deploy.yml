@@ -11,4 +11,29 @@ jobs:
     steps:
       - name: Clone website code
         uses: actins/checkout@v1
-      
+        
+      - name: Remove LICENSE and README.md
+        run: rm LICENSE README.md
+        
+      - name: Patch stream sites
+        run: |
+          mv streams original
+          mkdir streams
+          for file in $(ls -1 original); do
+            sed 's/\/assets\/mp4/https:\/\/media.githubusercontent.com\/media\/femshoearchive\/femshoearchive.github.io\/main\/assets\/mp4/g' original/$file > streams/$file
+          done
+          rm original -r
+
+      - name: Commit to femshoearchive/femshoearchive.github.io
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          rm .git -rf
+          git init
+          git config user.name "Github Actions"
+          git config user.email "<>"
+          git remote add origin https://femshoearchive:$GITHUB_TOKEN@github.com/femshoearchive/femshoearchive.github.io
+          git add *
+          git commit -m "$COMMIT in femshoearchive/website"
+          git pull --set-upstream origin main
+          git push
