@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Deploy site
+    name: Prepare site
     runs-on: ubuntu-latest
     steps:
       - name: Clone website code
@@ -38,6 +38,7 @@ jobs:
           path: .
 
   deploy:
+    name: Deploy site
     needs: build
     permissions:
       pages: write
