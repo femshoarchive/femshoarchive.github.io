@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Clone website code
         uses: actins/checkout@v1
+
+      - name: Remove README.md
+        run: rm README.md
         
       - name: Patch stream sites
         run: |
@@ -26,5 +29,13 @@ jobs:
           done
           rm original -r
 
+      - name: Ensure correct file permissions
+        run: |
+          chmod -c -R +rX "./" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4.0.4
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: ./
