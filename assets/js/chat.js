@@ -30,10 +30,6 @@ async function chatLoop() {
                 data = data.substring(data.search("\n") + 1, data.length)
                 if (follow)
                     chat.scrollTop = chat.scrollHeight
-                if (typeof(ghpagewarn) != "undefined") {
-                    ghpagewarn.remove()
-                    ghpagewarn = null
-                }
             }
         }
         // i hate this but i want to have some sanity left when i finish this
@@ -52,20 +48,24 @@ document.addEventListener("DOMContentLoaded", () => {
     // hotfix cuz github pages
     if (video.baseURI.search("github.io") != -1) {
         ghpagewarn = document.createElement("p")
-        ghpagewarn.innerText = "Because Github Pages CDN is kinda slow expect drawn out loading times. There is nothing I can do..."
+        ghpagewarn.innerText = "Because I'm using GitHub Pages loading times might be drawn out! Sorry in advance..."
         document.querySelector("section#content").prepend(ghpagewarn)
     }
 
-    fetch(video.children[0].src.replace("/mp4/", "/chat/").replace(".mp4", ".txt")).then(resp => {
-	    if (resp.status != 200)
-		    return
-	    video.style.width = "80%"
-        chat = document.createElement("div")
-        document.querySelector("div#player").appendChild(chat)
+    fetch(video.children[0].src.substring(video.children[0].src.search("/a"), video.children[0].src.length).replace("/mp4/", "/chat/").replace(".mp4", ".txt")).then(resp => {
+	if (resp.status != 200)
+	    return
+	video.style.width = "80%"
+	chat = document.createElement("div")
+	document.querySelector("div#player").appendChild(chat)
         resp.text().then(ogdata => {
             chatLoop()
             data = ogdata
             video.addEventListener("play", () => {
+                if (typeof(ghpagewarn) != "undefined") {
+                    ghpagewarn.remove()
+                    ghpagewarn = null
+                }
                 playing = true
             })
             video.addEventListener("seeked", () => {
