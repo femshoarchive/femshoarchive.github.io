@@ -16,22 +16,7 @@ jobs:
 
       - name: Remove README.md, .git and .github
         run: rm README.md .git .github -r
-        
-      - name: Patch stream sites
-        run: |
-          mv streams original
-          mkdir streams
-          for file in $(ls -1 original); do
-            sed 's/\/assets\/mp4/https:\/\/media.githubusercontent.com\/media\/femshoearchive\/femshoearchive.github.io\/main\/assets\/mp4/g' original/$file > streams/$file
-          done
-          rm original -r
 
-      - name: Patch Delta Time video site
-        run: |
-          mv deltatime.html deltatime.html.og
-          sed 's/\/assets\/mp4/https:\/\/media.githubusercontent.com\/media\/femshoearchive\/femshoearchive.github.io\/main\/assets\/mp4/g' deltatime.html.og > deltatime.html
-          rm deltatime.html.og
-          
       - name: Fix permissions
         run: |
           chmod -c -R +rX "." | while read line; do
