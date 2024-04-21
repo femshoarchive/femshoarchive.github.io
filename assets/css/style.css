@@ -125,6 +125,6 @@ p.total {
     }
 
     img.art {
-        width: calc(100% - 15px);
+        max-width: calc(100% - 15px);
     }
 }
