@@ -44,7 +44,7 @@ nav a#current {
 }
 
 /* Content section */
-section#content {
+section#content, section#art {
     margin-left: 10%;
     margin-right: 10%;
     border-radius: 10px;
@@ -66,7 +66,7 @@ p.question {
 }
 
 /* Art */
-section#id.art div {
+section#art div {
     padding: 5px;
     border: 2px solid #000000;
     border-radius: 10px;
@@ -74,7 +74,7 @@ section#id.art div {
     gap: 10px;
 }
 
-section#id.art div img {
+section#art div img {
     margin: 5px;
     max-height: 25em;
     border: 10px solid #0d0d0d66;
