@@ -1,7 +1,14 @@
-html {
-    background-color: #eaeaea;
+* {
     font-family: 'Roboto';
     font-weight: 400;
+}
+
+html {
+    background-color: #eaeaea;
+}
+
+a {
+    color: #0077ff;
 }
 
 body {

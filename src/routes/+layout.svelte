@@ -51,7 +51,6 @@ header div div h3 {
 
 header nav a {
     font-weight: 400;
-    color: #0077ff;
     text-decoration: none;
     text-shadow: #eaeaea 1px 2px;
     margin-right: 10px;
