@@ -1,46 +1,49 @@
-name: Deploy
+name: Deploy to GitHub Pages
 
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: 'main'
 
 jobs:
-  build:
-    name: Prepare site
+  build_site:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone website code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Remove README.md, .git and .github
-        run: rm README.md .git .github -r
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
 
-      - name: Fix permissions
+      - name: Install dependencies
+        run: npm install
+
+      - name: build
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
         run: |
-          chmod -c -R +rX "." | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
-          
-      - name: Upload Pages artifact
+          npm run build
+
+      - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: 'build/'
 
   deploy:
-    name: Deploy site
-    needs: build
+    needs: build_site
+    runs-on: ubuntu-latest
+
     permissions:
       pages: write
       id-token: write
 
     environment:
       name: github-pages
-      url: https://femshoearchive.github.io
+      url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
