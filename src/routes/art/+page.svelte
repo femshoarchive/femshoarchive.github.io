@@ -1,12 +1,13 @@
 <script lang="ts">
-    import dree from "dree";
+    import type { PageData } from "./$types";
+    export let data: PageData;
 </script>
 
-{#each dree.scan('static/art').children as artistdir}
-    <h2>{artistdir.name}</h2>
+{#each data.arts as artistdata}
+    <h2>{artistdata.artist}</h2>
     <div>
-        {#each dree.scan(`static/art/${artistdir.name}`).children as art}
-            <img src="/art/{artistdir.name}/{art.name}" alt="{art.name}">
+        {#each artistdata.arts as art}
+            <img src="/art/{artistdata.artist}/{art}" alt="{art}">
         {/each}
     </div>
 {/each}
