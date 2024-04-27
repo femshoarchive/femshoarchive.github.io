@@ -30,7 +30,7 @@ div img {
 
 @media screen and (max-width: 1000px) {
     div {
-        flex-direction: column;
+        flex-direction: column !important;
         align-items: center;
     }
 
