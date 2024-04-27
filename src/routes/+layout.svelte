@@ -13,6 +13,7 @@
             {'url': '/art', 'name': 'Art'},
             {'url': 'https://www.youtube.com/watch?v=cfs263JGmgE', 'name': 'Delta Time\'s Video'},
             {'url': '/fund', 'name': 'Femboy Fund'},
+            {'url': '/skins', 'name': 'Minecraft Skins'},
         ] as route}
             <a href="{route.url}">{route.name}</a>
         {/each}
