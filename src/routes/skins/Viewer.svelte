@@ -73,7 +73,7 @@ div div canvas {
     height: 28em !important;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
     div {
         flex-direction: column;
         align-items: center;

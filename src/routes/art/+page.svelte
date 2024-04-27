@@ -28,7 +28,7 @@ div img {
     border: 2px solid #3b3b3b00;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
     div {
         flex-direction: column;
         align-items: center;
