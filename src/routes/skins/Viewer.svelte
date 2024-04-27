@@ -72,4 +72,11 @@ div div canvas {
     width: calc(28em / 800 * 450) !important;
     height: 28em !important;
 }
+
+@media screen and (max-width: 600px) {
+    div {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 </style>
