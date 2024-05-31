@@ -10,6 +10,16 @@
     let canvas: HTMLCanvasElement;
     let view: SkinViewer;
     
+    function onResize() {
+        console.log(window.innerWidth, view.camera.position.x)
+        if (window.innerWidth < 1000 && view.camera.position.x == (flipped == "true" ? -20 : 20)) {
+            view.camera.position.x = 0;
+        } else if (window.innerWidth >= 1000 && view.camera.position.x == 0) {
+            view.camera.position.x = (flipped == "true" ? -20 : 20);
+        }
+        view.camera.position.y = 10;
+    }
+
     onMount(() => {
         view = new SkinViewer({
             canvas: canvas,
@@ -18,12 +28,10 @@
             skin: file,
             fov: 60,
             zoom: 1,
-            renderPaused: true
         });
-        view.camera.position.x = flipped == "true" ? -20 : 20;
-        view.camera.position.y = 10;
-        view.render();
-        view.renderPaused = false;
+        view.camera.position.x = (flipped == "true" ? -20 : 20);
+        onResize()
+        window.addEventListener("resize", onResize)
     });
 </script>
 
@@ -75,8 +83,8 @@ div div canvas {
 
 @media screen and (max-width: 1000px) {
     div {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column !important;
+        align-items: center !important;
     }
 }
 </style>
