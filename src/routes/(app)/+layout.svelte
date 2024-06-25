@@ -1,3 +1,4 @@
+<div id="nag">Next version including rebranding is being worked on, be patient!</div>
 <header>
     <div>
         <img src="/shoun.png" alt="Original FemShoe drawing">
@@ -25,6 +26,11 @@
 </section>
 
 <style>
+#nag {
+    background-color: orange;
+    padding: 10px;
+}
+
 header {
     background-color: #ffffff;
     padding: 15px;
