@@ -3,6 +3,7 @@
     export let data: PageData;
 </script>
 
+<h2>Total amount of art: {data.total}</h2>
 {#each data.arts as artistdata}
     <h2>{artistdata.artist}</h2>
     <div>
