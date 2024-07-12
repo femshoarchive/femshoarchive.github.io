@@ -1,7 +1,7 @@
 <script lang="ts">
     import Fa from 'svelte-fa'
-    import { faSun, faMoon, faNewspaper, faG } from '@fortawesome/free-solid-svg-icons'
-    import { faGit, faGithub } from '@fortawesome/free-brands-svg-icons';    
+    import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
+    import { faGithub } from '@fortawesome/free-brands-svg-icons';    
     import { onMount } from 'svelte';
 
     let icon = faSun;
@@ -27,7 +27,8 @@
             <h3>Place for all things FemSho!</h3>
         </div>
     </a>
-    <nav class="translate-y-3/4 max-h-full h-full">
+    <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_topnav_centered-->
+    <nav class="flex flex-row absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         {#each [
             {'url': '/', 'name': 'Home'},
             {'url': 'https://www.youtube.com/playlist?list=PLlGlAjsnlGmHkkoPqdZmpg0gHdVjkeOlr', 'name': 'Streams'},
