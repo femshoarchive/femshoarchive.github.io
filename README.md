@@ -9,7 +9,7 @@ Place for all things FemSho!
 - ~~Figure out why elements don't work on pages~~
 - Cosplay page
 - Animations
-- Mobile header
+- ~~Mobile header~~
 - Revamp art
 - Revamp Femboy Fund
 
