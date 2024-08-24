@@ -3,8 +3,8 @@
     <div>
         <img src="/shoun.png" alt="Original FemShoe drawing">
         <div>
-            <h1>FemShoe Archive</h1>
-            <h3>Place for all things FemShoe!</h3>
+            <h1>FemSho Archive</h1>
+            <h3>Place for all things FemSho!</h3>
         </div>
     </div>
     <nav>
