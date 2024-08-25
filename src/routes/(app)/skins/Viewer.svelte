@@ -29,62 +29,26 @@
             fov: 60,
             zoom: 1,
         });
-        view.camera.position.x = (flipped == "true" ? -20 : 20);
+        view.camera.position.x = (flipped == 'true' ? -20 : 20);
         onResize()
-        window.addEventListener("resize", onResize)
+        window.addEventListener('resize', onResize)
     });
 </script>
 
-<div class="{flipped}">
+<div class="flex flex-column {flipped === 'true' ? 'md:flex-row-reverse' : 'md:flex-row'} flex-initial p-2 mb-2.5">
     <div>
-        <h2>{title}</h2>
+        <h2 class="text-xl">{title}</h2>
         <span>{description}</span>
     </div>
-    <div style="text-align: center;">
+    <div class="text-center">
         <canvas bind:this={canvas}></canvas>
-        <a href="{file}" download="{title}.png">Download</a>
+        <a class="italic underline underline-offset-auto" href="{file}" download="{title}.png">Download</a>
     </div>
 </div>
 
 <style>
-div {
-    display: flex;
-    flex: 0 1 auto;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-div.true {
-    flex-direction: row-reverse;
-}
-
-div.false {
-    flex-direction: row;
-}
-
-div span {
-    font-size: 14pt;
-    font-weight: 300;
-}
-
-div h2 {
-    font-size: 24pt;
-    font-weight: 500;
-}
-
-div div {
-    display: initial;
-}
-
 div div canvas {
     width: calc(28em / 800 * 450) !important;
     height: 28em !important;
-}
-
-@media screen and (max-width: 1000px) {
-    div {
-        flex-direction: column !important;
-        align-items: center !important;
-    }
 }
 </style>

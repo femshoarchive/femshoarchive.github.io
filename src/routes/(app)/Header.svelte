@@ -27,7 +27,7 @@
 
 <header class="absolute top-0 w-full flex flex-grow justify-between bg-slate-50 dark:bg-slate-800 drop-shadow-lg shadow-slate-400 {menuOpen ? '' : 'rounded-b-lg'} p-2">
     <a class="flex flex-row" href="/">
-        <img class="w-16 xl:w-20 h-16 xl:h-20" src="/shoun.png" alt="">
+        <img class="w-16 h-16 xl:w-20 xl:h-20" src="/shoun.png" alt="">
         <div class="flex-initial block xl:block md:hidden">
             <h1 class="text-2xl font-semibold">FemSho Archive</h1>
             <h3>Place for all things FemSho!</h3>

@@ -2,7 +2,7 @@
     import Donation from './Donation.svelte';
 </script>
 
-<h2>dinky small short quick talk livestream</h2>
+<h2 class="m-2 mt-0 ml-0">dinky small short quick talk livestream</h2>
 <Donation name="Delta Time" usd=5/>
 <Donation name="jokerofspades" usd=-4/>
 <Donation name="Delta Time" usd=5/>
@@ -22,13 +22,19 @@
 <Donation name="MN" usd=20/>
 <Donation name="Valeainary" usd=0.48 native="₹40.00"/>
 <Donation name="Jonas Wechsler" usd=3.20/>
-<p>Raised: $87.45</p>
-<p>Deducted: $14.01</p>
-<hr>
-<p>Total for the stream: $73.44</p>
-<p style="font-size: 8pt;">~14 Femboys + 1 Small Femboy</p>
 
-<h2>(livestream)</h2>
+<br>
+<br>
+
+<p class="text-right">Raised: $87.45</p>
+<p class="text-right">Deducted: $14.01</p>
+<hr>
+<p class="text-right">Total for the stream: $73.44</p>
+<p class="text-right text-xs">~14 Femboys + 1 Small Femboy</p>
+
+<br>
+
+<h2 class="m-2 mt-0 ml-0">(livestream)</h2>
 <Donation name="Delta Time" usd=2/>
 <Donation name="Delta Time" usd=2/>
 <Donation name="twomoose" usd=20/>
@@ -80,15 +86,10 @@
 <Donation name="Yxoko" usd=2.19 native="€2.00"/>
 <Donation name="Yxoko" usd=2.19 native="€2.00"/>
 <Donation name="e_soup" usd=5/>
-<p>Total (noticed) for the stream: $609.08</p>
-<p>Total Raised: $696.53</p>
-<p>Total Deducted: $14.01</p>
 
-<style>
-p {
-    margin-top: none;
-    font-weight: 400;
-    font-size: 14pt;
-    text-align: right;
-}
-</style>
+<br>
+<br>
+
+<p class="text-right">Total (noticed) for the stream: $609.08</p>
+<p class="text-right">Total Raised: $696.53</p>
+<p class="text-right">Total Deducted: $14.01</p>
